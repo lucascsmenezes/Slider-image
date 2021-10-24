@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slider de Imagem</title>
+</head>
+<body>
+        
+        <img src="https://sindafsp.org.br/wp-content/uploads/2017/10/wallpaper.wiki-Full-hd-pc-photos-free-download-PIC-WPC002354-1.jpg" alt="">
+
+    <div class="controls-pos">
+        <button id="btn-ant" onclick="afterImage()"><p><</p></input>
+        <button id="btn-prox" onclick="nextImage()"><p>></p></button>
+    </div>
+
+    <style>
+    *{
+        padding: 0;
+        margin: 0;
+    }
+    body{
+        width: 100vw;
+        height: 100vh;
+    }
+
+    img{
+        position: absolute;
+        width: 100vw;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .controls-pos{
+        position: absolute;
+        bottom: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 150px;        
+        background-color: rgba(0, 0, 0, 0.671);
+    }
+
+    button{
+        margin-right: 50px;
+        width: 40px;
+        height: 40px;
+        border-radius: 50px;
+        cursor: pointer;
+        text-align: center;
+        border: none;
+        background-color: aliceblue;
+    }
+    
+    button:hover{
+        background: linear-gradient(to bottom, white 20%, rgb(110, 110, 110));
+    }
+
+    p{
+        font-size: medium;
+    }
+    </style>
+
+    <script>
+        const ordemA = 
+        [
+            "https://sindafsp.org.br/wp-content/uploads/2017/10/wallpaper.wiki-Full-hd-pc-photos-free-download-PIC-WPC002354-1.jpg",
+            "https://www.teahub.io/photos/full/0-38_imagens-1080p-full-hd.jpg",
+            "https://images.unsplash.com/photo-1552319704-41c50c38c26e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8OXx8fGVufDB8fHx8&w=1000&q=80"
+        ];
+        const ordemD = 
+        [
+            "https://sindafsp.org.br/wp-content/uploads/2017/10/wallpaper.wiki-Full-hd-pc-photos-free-download-PIC-WPC002354-1.jpg",
+            "https://images.unsplash.com/photo-1552319704-41c50c38c26e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8OXx8fGVufDB8fHx8&w=1000&q=80",
+            "https://www.teahub.io/photos/full/0-38_imagens-1080p-full-hd.jpg" // ← não tem vírgula
+        ];
+        function nextImage(){
+            const img = document.querySelector("img");
+            const img_src = img.src;
+            const img_index = ordemA.indexOf(img_src);
+            img.src = ordemA[img_index == ordemA.length - 1 ? 0 : img_index + 1];
+        }
+        function afterImage(){
+            const img = document.querySelector("img");
+            const img_src = img.src;
+            const img_idx = ordemD.indexOf(img_src);
+            img.src = ordemD[img_idx == ordemD.length - 1 ? 0 : img_idx + 1];
+        }
+    </script>
+</body>
+</html>
